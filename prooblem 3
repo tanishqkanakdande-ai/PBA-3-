@@ -1,0 +1,19 @@
+# Password Validation using Regular Expressions
+
+import re
+
+# Password validation function
+def validate_password(password):
+
+    pattern = r'^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&+=!]).{8,}$'
+
+    if re.match(pattern, password):
+        print(password, "- Valid password")
+    else:
+        print(password, "- Invalid password")
+
+
+# Main Program
+password = input("Enter password: ")
+
+validate_password(password)
