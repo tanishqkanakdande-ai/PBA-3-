@@ -1,0 +1,34 @@
+# Rod Cutting Problem using Dynamic Programming
+
+def rod_cutting(price, n):
+
+    dp = [0] * (n + 1)
+
+    for i in range(1, n + 1):
+        max_profit = 0
+
+        for j in range(1, i + 1):
+            max_profit = max(
+                max_profit,
+                price[j - 1] + dp[i - j]
+            )
+
+        dp[i] = max_profit
+
+    return dp[n]
+
+
+# Main Program
+n = int(input("Enter rod length: "))
+
+price = []
+
+print("Enter prices for each length:")
+
+for i in range(n):
+    p = int(input(f"Price of length {i + 1}: "))
+    price.append(p)
+
+result = rod_cutting(price, n)
+
+print("Maximum Profit:", result)
